@@ -1,0 +1,77 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<mat-tab-group *ngIf="!isLoading">
+  <mat-tab label="Current">
+    <div class="container-fluid" *ngIf="tests.length && !isLoading">
+      <div class="row" *ngFor="let test of tests">
+        <div class="col-sm-4" *ngFor="let subtest of test">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{ subtest.test_name }}</mat-card-title>
+              <mat-card-subtitle>{{
+                subtest.classroom_name
+              }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Start Date: {{ subtest.start_date | date }}</p>
+              <p>Due Date: {{ subtest.due_date | date }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                [routerLink]="['/test', subtest._id]"
+              >
+                Attempt
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="!tests.length && !isLoading" class="info-text">
+      No Ongoing Test For Now 😆
+    </p>
+  </mat-tab>
+  <mat-tab label="Past">
+    <div class="container-fluid" *ngIf="tests1.length && !isLoading">
+      <div class="row" *ngFor="let test of tests1">
+        <div class="col-sm-4" *ngFor="let subtest of test">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{ subtest.test_name }}</mat-card-title>
+              <mat-card-subtitle>{{
+                subtest.classroom_name
+              }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Start Date: {{ subtest.start_date | date }}</p>
+              <p>Due Date: {{ subtest.due_date | date }}</p>
+              <p *ngIf="subtest.test_responses">
+                Your Grade:
+                {{
+                  (
+                    subtest.test_responses
+                    | gradeFilter : authService.getUserId()
+                  )?.marks || "Not attempted"
+                }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                [routerLink]="['/test', subtest._id]"
+              >
+                Show
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="!tests1.length && !isLoading" class="info-text">
+      No Past Test For Now 😆
+    </p>
+  </mat-tab>
+</mat-tab-group>

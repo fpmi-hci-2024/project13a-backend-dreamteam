@@ -1,0 +1,110 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink="/">Brain Bridge</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <span class="example-spacer"></span>
+    <ul class="navbar-nav mr-auto">
+      <li>
+        <a
+          *ngIf="!isAuthenticated && !isLoading"
+          class="nav-link"
+          mat-button
+          routerLink="/login"
+          routerLinkActive="mat-accent"
+          ><mat-icon>login</mat-icon> Login</a
+        >
+      </li>
+
+      <li>
+        <a
+          *ngIf="isAuthenticated && !isLoading"
+          class="nav-link"
+          mat-button
+          routerLink="/studentsubjects"
+          routerLinkActive="mat-accent"
+          ><mat-icon>subject</mat-icon> Subjects</a
+        >
+      </li>
+
+      <li>
+        <a
+          *ngIf="isAuthenticated && !isLoading"
+          class="nav-link"
+          mat-button
+          routerLink="/submissions"
+          routerLinkActive="mat-accent"
+          ><mat-icon>assignment </mat-icon> Submissions</a
+        >
+      </li>
+      <li>
+        <a
+          *ngIf="isAuthenticated && !isLoading"
+          class="nav-link"
+          mat-button
+          routerLink="/tests"
+          routerLinkActive="mat-accent"
+          ><mat-icon>fact_check</mat-icon> Tests</a
+        >
+      </li>
+
+      <li>
+        <a
+          *ngIf="isAuthenticated && !isLoading"
+          class="nav-link"
+          mat-button
+          [matMenuTriggerFor]="notifi"
+          title="Notifications"
+        >
+          <mat-icon>notifications</mat-icon> Notifications
+        </a>
+      </li>
+      <mat-menu #notifi="matMenu">
+        <ul class="list-group" *ngFor="let mainNoti of notifications">
+          <li class="list-group-item">
+            <h2>{{ mainNoti.subName }}<br /></h2>
+            <ul class="list-group" *ngFor="let subNoti of mainNoti.notifi">
+              <li class="list-group-item">
+                <div class="notification-list">
+                  <h3>Notification: {{ subNoti.content }}<br /></h3>
+                  <p>Date: {{ subNoti.date | date }}<br /></p>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p class="info-text" *ngIf="!notifications && !isLoading">
+          No Notification
+        </p>
+      </mat-menu>
+      <li>
+        <a
+          class="nav-link"
+          mat-button
+          [matMenuTriggerFor]="menu"
+          *ngIf="isAuthenticated && !isLoading"
+        >
+          <mat-icon>account_box</mat-icon> {{ userDataAll.name }}
+        </a>
+      </li>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>perm_identity</mat-icon>Profile
+        </button>
+        <button mat-menu-item (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>Log Out
+        </button>
+      </mat-menu>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,41 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+.list-main {
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1px solid;
+}
+.list-item {
+  margin: 1%;
+  padding: 1%;
+  background-color: white;
+  font-weight: 450;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.action button {
+  margin: 0% 2% 0% 2%;
+}
+mat-spinner {
+  margin: auto;
+}
+
+.grade-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.grade-buttons button {
+  flex: 0 0 calc(20% - 8px);
+}

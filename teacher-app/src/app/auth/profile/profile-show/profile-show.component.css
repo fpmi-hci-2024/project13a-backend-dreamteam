@@ -1,0 +1,29 @@
+img {
+  margin-left: 45%;
+  margin-right: 45%;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+mat-spinner {
+  margin: auto;
+}
+.list-main {
+  margin-top: 2%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 1px solid;
+}
+.list-item {
+  margin: 1%;
+  padding: 1%;
+  background-color: white;
+  font-weight: 450;
+}
+.action button {
+  margin: 0% 45% 0% 45%;
+}

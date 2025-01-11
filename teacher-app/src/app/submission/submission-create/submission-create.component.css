@@ -1,0 +1,11 @@
+mat-form-field {
+  width: 100%;
+}
+.sub-form {
+  padding: 5%;
+  border: 1px solid;
+  margin: 2%;
+}
+mat-spinner {
+  margin: auto;
+}

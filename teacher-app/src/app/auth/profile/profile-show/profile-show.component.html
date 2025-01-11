@@ -1,0 +1,29 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<img
+  [src]="userDataAll.photo"
+  [alt]="userDataAll.name"
+  class="avatar"
+  *ngIf="!isLoading && userDataAll"
+/>
+<div class="list-main" *ngIf="!isLoading && userDataAll">
+  <div class="list-item">Name: {{ userDataAll.name }}</div>
+  <mat-divider></mat-divider>
+  <div class="list-item">User Type: {{ userDataAll.utype }}</div>
+  <mat-divider></mat-divider>
+  <div class="list-item">Department: {{ userDataAll.department }}</div>
+  <mat-divider></mat-divider>
+  <div class="list-item">Email: {{ userDataAll.email }}</div>
+  <mat-divider></mat-divider>
+  <div class="list-item">Contact No: {{ userDataAll.contact_no }}</div>
+  <mat-divider></mat-divider>
+  <div class="list-item action">
+    Actions:
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/profile/edit', userId]"
+    >
+      Edit Profile
+    </button>
+  </div>
+</div>

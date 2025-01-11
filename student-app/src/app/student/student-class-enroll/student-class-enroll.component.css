@@ -1,0 +1,14 @@
+mat-card {
+  width: 100%;
+}
+mat-spinner {
+  margin: auto;
+}
+.example-card {
+  margin-top: 15px;
+  width: 100%;
+  align-items: center;
+}
+.example-card button {
+  margin-left: 37.5%;
+}
